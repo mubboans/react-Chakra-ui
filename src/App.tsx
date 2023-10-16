@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import "./App.css";
 import CategoryForm from "./components/CategoryForm";
+import Home from "./components/Home";
 import ListGroup from "./components/ListGroup";
 import { User } from "./components/User";
 const listArr = ["Mubashir", "Rafique", "Ahmed", "Ansari"];
@@ -11,9 +12,10 @@ const handlingSelectedItem = (item: string) => {
 function App() {
   return (
     <>
-      <User />
+      <Home />
+      {/* <User />
 
-      <CategoryForm></CategoryForm>
+      <CategoryForm></CategoryForm> */}
     </>
   );
 }
