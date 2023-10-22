@@ -57,6 +57,7 @@ const GameCard = ({ props }: Props) => {
             {props.parent_platforms.map(({ platform }) => (
               <>
                 <Icon
+                  key={platform.id}
                   color={"gray.500"}
                   margin={"1px"}
                   as={iconMap[platform.slug]}

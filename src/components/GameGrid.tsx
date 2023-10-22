@@ -2,24 +2,36 @@ import { StarIcon } from "@chakra-ui/icons";
 import { List, ListItem, SimpleGrid, Text } from "@chakra-ui/react";
 import useGame from "../hooks/useGame";
 import GameCard from "./GameCard";
-const GameGrid = () => {
-  const { games, error } = useGame();
+import CardSkeleton from "./CardSkeleton";
+import { GenProps } from "./Main";
+const GameGrid = ({ selectGenre }: GenProps) => {
+  const cardSke = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+  const { data, error, loadingState } = useGame(selectGenre);
 
   return (
     <div>
       {error && <Text>{error}</Text>}
 
-      {games.length > 0 && !error && (
+      {loadingState && (
+        <SimpleGrid
+          columns={{ sm: 1, md: 2, lg: 3, xl: 3 }}
+          padding={10}
+          spacing={10}
+        >
+          {cardSke.map((x) => (
+            <CardSkeleton key={x} />
+          ))}
+        </SimpleGrid>
+      )}
+      {data.length > 0 && !error && (
         <SimpleGrid
           columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
           padding={10}
           spacing={10}
         >
           {/* // <List spacing={3}> */}
-          {games.map((games) => (
-            <GameCard key={games.id} props={games}>
-              {" "}
-            </GameCard>
+          {data.map((games) => (
+            <GameCard key={games.id} props={games}></GameCard>
             // <ListItem>
             //   <StarIcon boxSize={6} color={"teal.600"} />
             //   {/* <ListIcon as={MdCheckCircle} color="green.500" /> */}
