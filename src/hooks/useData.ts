@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import helper from '../config/helper';
 // import { Games } from '../interface/Games';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const useData = (endpoint: string, requestAxios?: AxiosRequestConfig, deps?: any[]) => {
     const [data, setData] = useState([]);
     const [error, setError] = useState();

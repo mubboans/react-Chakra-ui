@@ -3,12 +3,11 @@ import {
   CardBody,
   Heading,
   Image,
-  Bad,
   Badge,
   HStack
 } from "@chakra-ui/react";
 import { Games } from "../interface/Games";
-import PlatformIcon from "./PlatformIcon";
+
 interface Props {
   props: Games;
 }
