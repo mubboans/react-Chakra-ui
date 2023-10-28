@@ -1,8 +1,9 @@
+import { Platform } from "../interface/Platform";
 import { Genre } from "../interface/Genre";
 import useData from "./useData"
 
 
-const useGame = (selectedGenre: Genre | null) => {
+const useGame = (selectedGenre: Genre | null, platforms?: Platform | null) => {
     // const [games, setGame] = useState<Games[]>([]);
     // const [error, setError] = useState();
     // const [loadingState, setloadingState] = useState(false);
@@ -25,7 +26,7 @@ const useGame = (selectedGenre: Genre | null) => {
     //     return () => controller.abort();
     // }, []);
     // return { games, error, loadingState }
-    const { data, error, loadingState } = useData('games', { params: { genres: selectedGenre?.id } }, [selectedGenre?.id]);
+    const { data, error, loadingState } = useData('games', { params: { genres: selectedGenre?.id, platforms: platforms?.id } }, [selectedGenre?.id, platforms?.id]);
     return { data, error, loadingState }
 }
 

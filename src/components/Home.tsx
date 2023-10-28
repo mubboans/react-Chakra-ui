@@ -4,9 +4,12 @@ import NavBar from "./NavBar";
 import Main from "./Main";
 import GenreList from "./GenreList";
 import { useState } from "react";
+import PlatFormSelect from "./PlatFormSelect";
+import { Genre } from "../interface/Genre";
+import { Platform } from "../interface/Platform";
 const Home = () => {
-  const [genre, setGenre] = useState(null);
-
+  const [genre, setGenre] = useState<Genre | null>(null);
+  const [platform, setPlatform] = useState<Platform | null>(null);
   return (
     <>
       <Grid
@@ -31,6 +34,7 @@ const Home = () => {
         <Show above="lg">
           <GridItem pl="2" bg="pink.300" area={"nav"}>
             <GenreList
+              genre={genre}
               selectedGenre={(x) => {
                 setGenre(x);
               }}
@@ -39,7 +43,13 @@ const Home = () => {
         </Show>
         <GridItem pl="2" bg="green.300" area={"main"}>
           <Text>Main</Text>
-          <Main selectGenre={genre} />
+          <PlatFormSelect
+            platformSelected={platform}
+            onSelectPlatform={(x) => {
+              setPlatform(x);
+            }}
+          />
+          <Main platform={platform} selectGenre={genre} />
         </GridItem>
         <GridItem pl="2" bg="blue.300" area={"footer"}>
           <Text>Footer</Text>

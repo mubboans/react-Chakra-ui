@@ -15,7 +15,7 @@ export interface Games {
     parent_platforms: { platform: Platform }[]
 }
 
-export interface Platform {
+interface Platform {
     id: number;
     name: string;
     slug: string;

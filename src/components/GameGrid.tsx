@@ -5,9 +5,9 @@ import GameCard from "./GameCard";
 import CardSkeleton from "./CardSkeleton";
 import { GenProps } from "./Main";
 import { Games } from "../interface/Games";
-const GameGrid = ({ selectGenre }: GenProps) => {
+const GameGrid = ({ selectGenre, platform }: GenProps) => {
   const cardSke = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-  const { data, error, loadingState } = useGame(selectGenre);
+  const { data, error, loadingState } = useGame(selectGenre, platform);
 
   return (
     <div>

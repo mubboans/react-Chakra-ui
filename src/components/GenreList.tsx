@@ -16,11 +16,12 @@ import { getCropImage } from "../config/helper";
 // import { GenProps } from "./Main";
 import { Genre } from "../interface/Genre";
 export interface GeneMethod {
+  genre?: Genre | null;
   selectedGenre: (genre: Genre) => void;
 }
 // {selectGenre}:GenProps
 
-const GenreList = ({ selectedGenre }: GeneMethod) => {
+const GenreList = ({ selectedGenre, genre }: GeneMethod) => {
   const { data, loadingState } = useGenre();
   return (
     <div>
@@ -41,6 +42,7 @@ const GenreList = ({ selectedGenre }: GeneMethod) => {
                   src={getCropImage(x.image_background)}
                 />
                 <Button
+                  fontWeight={x.id == genre?.id ? "bold" : "normal"}
                   fontSize={"large"}
                   variant={"link"}
                   onClick={() => {
