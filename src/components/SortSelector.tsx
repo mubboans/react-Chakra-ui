@@ -2,7 +2,7 @@ import { BsChevronDown } from "react-icons/bs";
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 interface sortProps {
   onSelectSort: (sortOrder: string) => void;
-  sortOrder: string;
+  sortOrder: string | "" | undefined | null;
 }
 const SortSelector = ({ onSelectSort, sortOrder }: sortProps) => {
   const sortMenu = [
@@ -20,7 +20,10 @@ const SortSelector = ({ onSelectSort, sortOrder }: sortProps) => {
         {/* {platformSelected && platformSelected
               ? platformSelected.name */}
         {/* : "Order by relevance"} */}
-        Order by {label && label ? label[0].label : "relevance"}
+        Order by{" "}
+        {label.length > 0 && label[0].label !== ""
+          ? label[0].label
+          : "relevance"}
       </MenuButton>
       <MenuList>
         {sortMenu.map((x) => (
