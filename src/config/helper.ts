@@ -9,6 +9,7 @@ export default axios.create({
 
 
 export function getCropImage(url: string) {
+    if (!url) return '';
     console.log(url, 'url string');
     const d = "media/";
     console.log(url.indexOf(d), ' url.indexOf(d)');

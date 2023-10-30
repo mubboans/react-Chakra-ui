@@ -5,7 +5,7 @@ import { usePlatform } from "../hooks/usePlatform";
 import { Platform } from "../interface/Platform";
 interface PlatformProps {
   onSelectPlatform: (platform: Platform) => void;
-  platformSelected: Platform;
+  platformSelected: Platform | null;
 }
 const PlatFormSelect = ({
   onSelectPlatform,
@@ -16,7 +16,9 @@ const PlatFormSelect = ({
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        {platformSelected.name}
+        {platformSelected && platformSelected
+          ? platformSelected.name
+          : "Select Platform"}
       </MenuButton>
       <MenuList>
         {error && data.length < 0 && (

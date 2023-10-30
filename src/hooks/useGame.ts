@@ -1,9 +1,11 @@
-import { Platform } from "../interface/Platform";
-import { Genre } from "../interface/Genre";
+// import { Platform } from "../interface/Platform";
+// import { Genre } from "../interface/Genre";
 import useData from "./useData"
+// import { GenProps } from "../components/Main";
+import { GameQuery } from "../components/Home";
 
 
-const useGame = (selectedGenre: Genre | null, platforms?: Platform | null) => {
+const useGame = (gameQuery: GameQuery) => {
     // const [games, setGame] = useState<Games[]>([]);
     // const [error, setError] = useState();
     // const [loadingState, setloadingState] = useState(false);
@@ -26,7 +28,9 @@ const useGame = (selectedGenre: Genre | null, platforms?: Platform | null) => {
     //     return () => controller.abort();
     // }, []);
     // return { games, error, loadingState }
-    const { data, error, loadingState } = useData('games', { params: { genres: selectedGenre?.id, platforms: platforms?.id } }, [selectedGenre?.id, platforms?.id]);
+    const { data, error, loadingState } = useData('games',
+        { params: { genres: gameQuery?.genre?.id, platforms: gameQuery?.platform?.id, ordering: gameQuery?.sortOrder } },
+        [gameQuery]);
     return { data, error, loadingState }
 }
 

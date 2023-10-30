@@ -5,9 +5,10 @@ import GameCard from "./GameCard";
 import CardSkeleton from "./CardSkeleton";
 import { GenProps } from "./Main";
 import { Games } from "../interface/Games";
-const GameGrid = ({ selectGenre, platform }: GenProps) => {
+// import { GameQuery } from "./Home";
+const GameGrid = ({ gameQuery }: GenProps) => {
   const cardSke = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-  const { data, error, loadingState } = useGame(selectGenre, platform);
+  const { data, error, loadingState } = useGame(gameQuery);
 
   return (
     <div>
@@ -16,7 +17,7 @@ const GameGrid = ({ selectGenre, platform }: GenProps) => {
       {loadingState && (
         <SimpleGrid
           columns={{ sm: 1, md: 2, lg: 3, xl: 3 }}
-          padding={10}
+          padding={5}
           spacing={10}
         >
           {cardSke.map((x) => (
@@ -27,7 +28,7 @@ const GameGrid = ({ selectGenre, platform }: GenProps) => {
       {data.length > 0 && !error && (
         <SimpleGrid
           columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
-          padding={10}
+          padding={3}
           spacing={10}
         >
           {/* // <List spacing={3}> */}
